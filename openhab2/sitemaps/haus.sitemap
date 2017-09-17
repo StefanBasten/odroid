@@ -1,0 +1,284 @@
+sitemap haus label="Unser Haus"{
+	Frame label="Gebäudeteil" {
+		Group item=Heizung label="Heizung" icon="fire" {
+			Group item=Ausgaenge label="Ausgänge" icon="switch2" {
+				Text item=Bit58 label="Solarpumpe [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit59 label="Zeitschaltprogramm [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit510 label="Resetimpuls [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit511 label="Freigabe [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit512 label="12 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit513 label="13 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit514 label="14 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit515 label="15 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit57 label="Mischer [MAP(mischer.map):%s]" icon="switch2"
+				Text item=Bit56 label="6 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit55 label="5 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit54 label="4 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit53 label="3 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit52 label="2 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit51 label="1 [MAP(bit.map):%s]" icon="switch2"
+				Text item=Bit50 label="0 [MAP(bit.map):%s]" icon="switch2"
+				}
+			Text item=Temp_Keller_Heizung_Kessel label="Kesseltemperatur [%.1f °C]" 
+			Text item=Temp_Keller_Heizung_Aussen label="Aussentemperatur [%.1f °C]" 
+			Text item=Temp_Keller_Heizung_Boiler label="Boilertemperatur [%.1f °C]"
+			Text item=Temp_Keller_Heizung_VL_UG label="Vorlauf_UG_Temperatur [%.1f °C]"
+			Text item=Temp_Keller_Heizung_VL_OG label="Vorlauf_OG_Temperatur [%.1f °C]"
+			Text item=Register_0_f label="Puffer oben [%.2f °C]" icon="temperature" 
+			Text item=Register_1_f label="Solar Dach [%.2f °C]"  icon="temperature"  
+			Text item=Solar_min  label="Solar min [%.2f °C]" icon="temperature"
+                        Text item=Solar_max  label="Solar max [%.2f °C]" icon="temperature"
+			Text item=Register_2_f label="Puffer mitte [%.2f °C]" icon="temperature"  
+			Text item=Register_3_f label="Solarleitung [%.2f °C]" icon="temperature"  
+			Text item=Register_4_f label="Rücklauf [%.2f °C]"    icon="temperature"  
+			Text item=Register_5_f label="Vorlauf [%.2f °C]"     icon="temperature"  
+			Text item=Register_6_f label="Aussentemperatur [%.2f °C]" icon="temperature" 
+			Text item=Aussen_min label="Aussen heutiges Min [%.2f °C]" icon="temperature"
+                        Text item=Aussen_max label="Aussen heutiges Max [%.2f °C]" icon="temperature"
+                        Text item=Aussen_dur label="Aussen durchschnitt [%.2f °C]" icon="temperature"
+			Text item=Register_7_f label="Kessel [%.2f °C]"    icon="temperature"
+                        Text item=VL_Soll label="Vorlauf_Soll [%.2f °C]"  icon="temperature"
+			Text item=G_AT label="gleitende Aussentemp[%.2f °C]" icon="temperature"
+			Text item=Countpump label="Count Solarpumpe [%d]"     icon="temperature"
+                        Text item=Countmischer label="Count Mischer [%d]" icon="temperature"
+			Text item=Pumpe label="Solarpumpe Laufzeit h:m:s [%s]" icon="clock" 
+			Text item=Misch label="Mischer Laufzeit h:m:s [%s]" icon="clock" 
+	                Text item=counter icon="meter"
+                        Text item=burner label="Brennerstarts [%.0f]" icon="meter"
+                        Text item=burnerd label="Brennerstarts heute [%.0f]" icon="meter"
+                        Text item=Zaehler_oel icon="oil2"
+                        Text item=Tagesoel icon="oil"
+                        Text item=Tagesoelh icon="oil"
+                        Text item=Tankinhalt icon="oil2"
+                        Text item=Jahresver icon="oil"
+				Frame label="Temperaturverlauf" {
+                                Image url="http://192.168.178.53:8080/chart?items=Register_0_f,Register_2_f,Register_1_f,Register_2_f,Register_3_f,Register_4_f,Register_5_f&period=D"
+                                Image url="http://192.168.178.53:8080/chart?items=VL_Soll,G_AT,Temp_Keller_Heizung_Kessel,Temp_Keller_Heizung_Boiler&period=D"
+                                                }
+			}
+		Group item=Garden label="Garten" icon="garden" {
+				Switch item=Aussen_Baum
+				Switch item=coil0 label="Bewässerung Kirschlorbeer" icon="switch"
+				Text item=coil101 label="24V Leistungsschalter" icon="sw"
+				Text item=coil111 label="230V Leistungsschalter" icon="sw"
+				Text item=Liter_min
+				Text item=Liter
+				Text item=Liter_Tag label="gestriger Verbrauch [%.1f Liter]" icon="faucet"
+				Text item=Tagesliter label="heutiger Verbrauch [%.1f Liter]" icon="faucet"
+				Text item=Jahresliter label="Jahresverbrauch [%.0f Liter]" icon="faucet"
+				Text item=Gardentemp label="Gartentemperatur [%.2f °C]" icon="temperature"
+				Text item=Gardenhumidy label="Gartenfeuchte [%.2f %%]" icon="humidity"
+				Text item=Gardendew label="Taupunkt [%.2f °C]" icon="temperature"
+				Text item=Gardenfeel label="gefühlte Temp. [%.2f °C]" icon="temperature"
+				Text item=Temp_pa label="Luftdruck [%.1f mbar]" 
+				Frame label="Durchflussverlauf" {
+                                Image url="http://192.168.178.53:8080/chart?items=Liter_min&period=D"
+                                Image url="http://192.168.178.53:8080/chart?items=Gardentemp,Gardenhumidy,Gardenfeel,Gardendew&period=D"
+				Image url="http://192.168.178.53:8080/chart?items=Temp_pa&period=D"
+				                }
+					}
+		Group item=Garage label="Garage" icon="garage"
+		Group item=Keller label="Keller" icon="cellar" {
+			Group item=Openhab label="Openhab" icon="line" {
+				Text item=CPU_Load label="CPU Load [%.2f %%]" icon="humidity"
+				Text item=CPU_Load1 label="CPU Load 1" icon="signal"
+				Text item=CPU_Load5 label="CPU Load 5" icon="signal"
+				Text item=CPU_Load15 label="CPU Load 15" icon="signal"
+				Text item=CPU_Threads label="Threads [%d]" icon="signal"
+				Text item=CPU_Uptime label="Uptime" icon="clock"
+				Text item=Network_DataSent label="Daten gesendet" icon="signal"
+				Text item=Network_DataRecevied label="Daten empfangen" icon="signal"
+				Text item=Network_PackagesSent label="Pakete gesendet" icon="signal"
+                                Text item=Network_PackagesRecevied label="Pakete empfangen" icon="signal"
+				Text item=Sensor_CPUTemp label="CPU Temperatur" icon="temperature"
+				Text item=Sensor_CPUVoltage label="CPU Spannung" icon="signal"
+				}
+                        Group item=Oel label="Oel" icon="oil" {
+                                Text item=counter icon="meter" 
+                                Text item=burner label="Brennerstarts [%.0f]" icon="meter"
+				Text item=burnerd label="Brennerstarts heute [%.0f]" icon="meter"
+				Text item=Zaehler_oel icon="oil2" 
+                                Text item=Tagesoel icon="oil" 
+                                Text item=Tagesoelh icon="oil" 
+                                Text item=Tankinhalt icon="oil2" 
+                                Text item=Jahresver icon="oil" 
+                                }
+			Group item=Strom label="Strom" icon="ener" {
+				Text item=Jahresstrom label="Jahresverbrauch ab 01.Feb. [%.1f kWh]" icon="meter"   
+				Text item=Wirkenergie label="Zählerstand Strom [%d kWh]" icon="meter"          
+				Text item=Tageswirk label="gestriger Verbrauch Strom [%.1f kWh]" icon="ener"
+				Text item=Tageswirkh label="heutiger Verbrauch Strom [%.0f Wh]" icon="ener"
+				Text item=Wirkleistung label="Wirkleistung [%.0f W]" icon="ener"
+				Text item=Wirkleistung_max label="Wirkleistung Maximum [%.0f W]" icon="ener"
+				Text item=Wirkleistung_min label="Wirkleistung Minimum [%.0f W]" icon="ener"
+				Text item=Wirkenergiew label="Wirkenergie [%.0f Wh]" icon="ener" 
+				Text item=Wirkenergie15 label="Wirkenergie 15min [%.0f Wh]" icon="ener"      
+				Text item=Wirkenergie15_max label="Wirkenergie 15min Maximum [%.0f Wh]" icon="ener"
+				Text item=Wirkenergie60 label="Wirkenergie 60min [%.0f Wh]" icon="ener"
+				Text item=Wirkenergie60_max label="Wirkenergie 60min Maximum [%.0f Wh]" icon="ener"  
+					Frame label="Temperaturverlauf" {
+					Image url="http://192.168.178.53:8080/chart?items=Wirkleistung,Wirkenergie60_max,Wirkenergie60,Wirkenergie15_max,Wirkenergie15&period=D"
+                                        }
+				}
+
+			}
+		Group item=Untergeschoss label="Untergeschoss" icon="cellar"  {
+			Group item=Hanna label="Hanna" icon="girl_3" {
+				Switch item=UG_Hanna_Licht label="Licht Decke"
+				Switch item=Rolladen_Untergeschoss_Hanna label="Rolladen" icon="blinds"  
+				Text item=Sollwert_SZ_UG label="Sollwert [%.1f °C]"
+				Text item=Temp_Keller_Heizung_SZ_UG label="Schlafzimmertemperatur [%.1f °C]"
+				Text item=Ventil_Keller_Heizung_SZ_UG label="Ventil Ist Schlafzimmer [%d %%]"
+				Text item=Ventil_Soll_Keller_Heizung_SZ_UG label="Ventil Soll Schlafzimmer [%d %%]"
+					Frame label="Temperaturverlauf" {
+                                        Image url="http://192.168.178.53:8080/chart?items=Temp_Keller_Heizung_SZ_UG,Sollwert_SZ_UG&period=D"
+                                        }
+				}
+			 Group item=Hanna label="Flur" icon="corridor" {
+                                Switch item=Occu_Untergeschoss_Flur label="Bewegung"
+				Switch item=Licht_Untergeschoss_Flur_Decke label="Deckenlicht"
+				}
+                        Group item=Kinderbad label="Kinderbad" icon="washingmachine" {
+                                Switch item=Licht_Untergeschoss_Bad_Spiegel label="Spiegelleuchte"
+				Switch item=Licht_Untergeschoss_Bad label="Downlights"
+                                Switch item=Rolladen_Untergeschoss_Bad label="Rolladen" icon="blinds"
+				Text item=Sollwert_Bad_UG label="Sollwert [%.1f °C]"
+				Text item=Temp_Keller_Heizung_Kueche_UG label="Badtemperatur [%.1f °C]"
+				Text item=Ventil_Keller_Heizung_Kueche_UG label="Ventil Ist Badezimmer [%d %%]"
+				Text item=Ventil_Soll_Keller_Heizung_Kueche_UG label="Ventil Soll Badezimmer [%d %%]"
+				Text item=UG_KB_T label="Temperatur AVM [%.1f °C]"
+                                Text item=UG_KB_W label="Gesamtverbrauch AVM [%.1f kWh]"
+                                Text item=UG_KB_P label="aktuelle Leistungsaufnahme AVM [%.1f W]"
+                                Switch item=Switch_Dect200_2 label="Waschmaschine" icon="poweroutlet"        
+				Text item=Waschmaschine_Time label="Waschmaschine fertig seit" icon="clock"
+					Frame label="Temperaturverlauf" {
+                                                Image url="http://192.168.178.53:8080/chart?items=UG_KB_P&period=D"
+						Image url="http://192.168.178.53:8080/chart?items=Temp_Keller_Heizung_Kueche_UG,Sollwert_Bad_UG&period=D"        
+                                        }
+				}
+			}
+		Group item=Erdgeschoss label="Erdgeschoss"	icon="groundfloor" {
+				Group item=Flur label="Flur"
+				Group item=Wohnzimmer label="Wohnzimmer" icon="video" {
+				Switch item=TB_Erdgeschoss_Wohnzimmer label="Fernsehsteckdose" icon="poweroutlet"
+				Switch item=Switch_Dect200_1 label="Fernsehsteckdose AVM" icon="poweroutlet"
+				Switch item=Rolladen_Erdgeschoss_Wohnzimmer label="Rolladen" icon="blinds"
+				Slider item=Licht_Erdgeschoss_Wohnzimmer_Dimmer label="Lüster" sendFrequency=400 switchSupport
+				Setpoint item=EG_WZ_etrv_s label="Soll Temperatur" step=0.5 minValue=15 maxValue=30
+				Text item=EG_WZ_etrv   label="Ist Temperatur [%.1f °C]"               
+				Text item=HK_WZ_HCM
+				Text item=EG_WZ_etrv_bat label="Batterie Spannung [%.1f Volt]"                       
+				Text item=EG_WZ_etrv_L_d label="Ventil [%.2f %%]" icon="heating"
+				Text item=EG_WZ_etrv_rssi label="Empfangsstärke  [%d dB]" icon="signal"
+				Text item=EG_WZ_etrv_rssi_d label="Sendestärke  [%d dB]" icon="signal"
+				Text item=EG_WZ_T1 label="Temperatur WZ [%.1f °C]"
+				Text item=EG_WZ_S1 label="Soll KNX [%.1f °C]"
+				Text item=EG_WZ_T label="Temperatur AVM [%.1f °C]"
+                                Text item=EG_WZ_W label="Gesamtverbrauch AVM [%.1f kWh]"
+                                Text item=EG_WZ_P label="aktuelle Leistungsaufnahme AVM [%.1f W]"
+					Frame label="Temperaturverlauf" {
+						Image url="http://192.168.178.53:8080/chart?items=EG_WZ_T1,EG_WZ_etrv,EG_WZ_etrv_s,EG_WZ_T&period=D"
+						}
+				}
+			Group item=Esszimmer label="Esszimmer" icon="tisch" {
+				Switch item=EG_EZ_Occu label="Bewegung" icon="eyes"
+				Switch item=Licht_Erdgeschoss_Esszimmer label="Deckenleuchte"
+				Switch item=Rolladen_Erdgeschoss_Esszimmer_Sportplatz label="Rolladen" icon="blinds"
+                                Setpoint item=EG_EZ_etrv_s label="Soll Temperatur" step=0.5 minValue=15 maxValue=30
+                                Text item=EG_EZ_etrv   label="Ist Temperatur [%.1f °C]"
+                                Text item=EG_EZ_etrv_bat label="Batterie Spannung [%.1f Volt]"
+                                Text item=EG_EZ_etrv_L_d label="Ventil [%.2f %%]" icon="heating"
+                                Text item=EG_EZ_etrv_rssi label="Empfangsstärke  [%d dB]" icon="signal"
+                                Text item=EG_EZ_etrv_rssi_d label="Sendestärke  [%d dB]" icon="signal"				
+				Text item=EG_EZ_T1 label="Temperatur EZ [%.1f °C]"
+                                Text item=EG_EZ_S1 label="Soll KNX [%.1f °C]"
+					Frame label="Temperaturverlauf" {
+                                                Image url="http://192.168.178.53:8080/chart?items=EG_EZ_etrv,EG_EZ_T1,EG_EZ_S1&period=D"
+                                                }
+				}
+			Group item=Kueche label="Küche" {
+                                Switch item=Licht_Erdgeschoss_Kueche label="Deckenleuchte"    
+                                Switch item=Herd_Erdgeschoss_Kueche label="Herd"
+                                Switch item=Rolladen_Erdgeschoss_Kueche label="Rolladen" icon="blinds" 
+				}
+			Group item=Kaminzimmer label="Kaminzimmer" icon="kamin" {
+				Switch item=EG_KZ_Leuchter label="Leuchter"
+				Switch item=EG_KZ_Downlights label="Downlights"
+				Switch item=Rollo_EG_KZ_alle label="Rolladen Kleine" icon="blinds"
+				Switch item=Rollo_EG_KZ_Strasse label="Rolladen Strasse" icon="blinds"
+				Switch item=Rollo_EG_KZ_Kasperlinks label="Rolladen Kasper links" icon="blinds"
+				Switch item=Rollo_EG_KZ_Kasperrechts label="Rolladen Kasper rechts" icon="blinds"
+		                Text item=EG_KZ_T1 label="Temperatur KZ [%.1f °C]"
+                                Text item=EG_KZ_S1 label="Soll KNX [%.1f °C]"		
+                                        Frame label="Temperaturverlauf" {
+                                                Image url="http://192.168.178.53:8080/chart?items=EG_KZ_T1,EG_KZ_S1&period=D"
+                                                }				
+				}
+			Group item=Bad label="Bad" {
+                                Switch item=Licht_Erdgeschoss_Bad label="Badleuchte"
+				Setpoint item=EG_Bad_etrv_s label="Soll Temperatur" step=0.5 minValue=15 maxValue=30
+                                Text item=EG_Bad_etrv   label="Ist Temperatur [%.1f °C]"
+                                Text item=EG_Bad_etrv_bat label="Batterie Spannung [%.1f Volt]"
+                                Text item=EG_Bad_etrv_L_d label="Ventil [%.2f %%]" icon="heating"
+				Text item=EG_Bad_etrv_rssi label="Empfangsstärke  [%d dB]" icon="signal"
+                                Text item=EG_Bad_etrv_rssi_d label="Sendestärke  [%d dB]" icon="signal"
+                                        Frame label="Temperaturverlauf" {
+                                                Image url="http://192.168.178.53:8080/chart?items=EG_Bad_etrv,EG_Bad_etrv_s&period=D"
+                                                }
+                                }
+
+			}
+		Group item=Obergeschoss label="Obergeschoss" icon="firstfloor"{
+			Group item=Badezimmer label="Badezimmer"{
+                                Slider item=Licht_Obergeschoss_Bad label="Lüster" sendFrequency=400 switchSupport
+				Text item=Sollwert_Bad_OG label="Sollwert [%.1f °C]"
+                                Text item=Temp_Bad_OG label="Badtemperatur [%.1f °C]"
+                                Text item=Ventil_Bad_OG label="Ventil Ist Badezimmer [%d %%]"
+                                Text item=Ventil_Soll_Bad_OG label="Ventil Soll Badezimmer [%d %%]"
+                                Switch item=Rolladen_Obergeschoss_Bad_OG label="Rolladen" icon="blinds"
+			        Frame label="Temperaturverlauf" {
+                                        Image url="http://192.168.178.53:8080/chart?items=Temp_Bad_OG,Sollwert_Bad_OG&period=D"
+                                        }
+                        }
+			Group item=Eltern label="Elternschlafzimmer"
+			Group item=Kind label="Kinderzimmer"
+			Group item=Flur_OG label="Flur"{
+			        Switch item=Licht_Obergeschoss_Flur  
+				Text item=Sollwert_Flur_OG label="Sollwert [%.1f °C]"
+                                Text item=Temp_Flur_OG label="Flurtemperatur [%.1f °C]"
+                                Text item=Ventil_Flur_OG label="Ventil Ist Flur [%d %%]"
+                                Text item=Ventil_Soll_Flur_OG label="Ventil Soll Flur [%d %%]"
+				Switch item=Rolladen_Obergeschoss_Flur label="Rolladen" icon="blinds"
+                                        Frame label="Temperaturverlauf" {
+                                        Image url="http://192.168.178.53:8080/chart?items=Temp_Flur_OG,Sollwert_Flur_OG&period=D"
+                                        }
+			}
+		}
+		Group item=Speicher label="Speicher" icon="attic"
+	}
+		
+		
+	Frame label="Allgemein" {
+		Switch item=Lights label="alle Leuchten [(%d)]" icon="light" mappings=[OFF="aus", ON="an"]
+		Group item=Aussenbel label="Beleuchtung" icon="outdoorlight"	
+		Switch item=Rolladen_Zentral label="Zentral Rolladen" mappings=[UP="Hoch", STOP="X", DOWN="Runter"]
+		Switch item=PingedItem_Stefan label="Stefan zu Hause " icon="nicole" mappings=[CLOSED="Nein", OPEN="Ja"] 
+		Switch item=PingedItem_Nicole label="Nicole zu Hause " icon="nicole"mappings=[CLOSED="Nein", OPEN="Ja"]
+		Text item=Occupancy valuecolor=[>6000="red",>600="orange",<=600="green"]
+		Text item=Occupancy_UG valuecolor=[>6000="red",>600="orange",<=600="green"]
+		}
+
+    Frame label="Wetter" {
+		Group item=Wetter label="Wetter" icon="sun"	
+                Webview url="/weather?locationId=home&layout=example&iconset=colorful" height=8
+                }
+
+	
+	Frame label="Datum" {
+		Text item=Datum icon="calendar"
+		Switch item=Testmail label="send Testmail" icon="switch"		
+		Switch item=Notauf label="Testswitch" icon="switch2"
+		}	
+}
+
+

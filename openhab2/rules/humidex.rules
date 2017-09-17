@@ -1,0 +1,63 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.lang.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+import org.eclipse.xtext.xbase.lib.Functions$Function2
+
+
+
+val org.eclipse.xtext.xbase.lib.Functions$Function2 calculateDewPoint = [
+    double temperature, double humidity
+    |
+    var double a
+    var double b
+    var double SDD
+    var double DD
+    var double v
+    var double TD
+
+    if (temperature >= 0.0){ // T >= 0 °C
+        a = 7.5
+        b = 237.3
+    } else { // T < 0 °C über Wasser
+        a = 7.6
+        b = 240.7
+    }
+    SDD=(6.1078 * Math::pow(10.0, ((a*temperature)/(b+temperature)).doubleValue)).doubleValue
+    DD = (humidity/100*SDD).doubleValue
+    v = Math::log10((DD/6.107).doubleValue)
+    TD = ((b*v)/(a-v)).doubleValue
+
+    // Return Value is TD
+    TD
+]
+
+rule "Humidex"
+	when
+		Time cron "0 * * * * ?" or
+                System started
+	then
+
+  var double TDo
+  var Number T = Gardentemp.state as DecimalType
+  var Number H = Gardenhumidy.state as DecimalType
+  var Number x = 7.5 * T/(237.7 + T)
+  var Number e = 6.112 * Math::pow(10, x.doubleValue) * H/100
+  var Number humidex = T + (new Double(5) / new Double(9)) * (e - 10)
+  postUpdate(Gardenfeel, humidex);
+  TDo = calculateDewPoint.apply((Gardentemp.state as DecimalType).doubleValue, (Gardenhumidy.state as DecimalType).doubleValue) as Double
+  postUpdate(Gardendew, TDo);
+//  logInfo("humidity","gestartet Temp "+ T +" Feuchte " + H + " Taupunkt " +TDo + " gefühlte Temp "+ humidex)
+end

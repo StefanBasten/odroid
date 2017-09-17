@@ -1,0 +1,47 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+
+rule "Strom"
+when
+    Time cron "0 * * * * ?" or
+    System started
+then
+    postUpdate(Wirkenergie15_max, Wirkenergie15.maximumSince(now.minusDays(0).withTimeAtStartOfDay).state)
+    postUpdate(Wirkenergie60_max, Wirkenergie60.maximumSince(now.minusDays(0).withTimeAtStartOfDay).state)
+    postUpdate(Wirkleistung_max, Wirkleistung.maximumSince(now.minusDays(0).withTimeAtStartOfDay).state)
+    postUpdate(Wirkleistung_min, Wirkleistung.minimumSince(now.minusDays(0).withTimeAtStartOfDay).state)
+
+    var Number Stromhh = Wirkenergiew.deltaSince(now.minusDays(0).withTimeAtStartOfDay) as DecimalType
+    postUpdate(Tageswirkh,Stromhh)
+
+    var Number Jahrstrom = 9137.0
+    var Number Zaehlstrom = Wirkenergie.state as DecimalType
+    postUpdate(Jahresstrom, Zaehlstrom - Jahrstrom)
+
+end
+
+rule "Stromverbrauch"
+
+when
+    Time cron "55 59 23 * * ?"
+then
+  var Number currKWh = Wirkenergie.state as DecimalType
+  var Number prevKWh = Wirkenergie.historicState(now().minusHours(24), "rrd4j").state as DecimalType
+  postUpdate(Tageswirk, currKWh - prevKWh)
+
+end
+
+

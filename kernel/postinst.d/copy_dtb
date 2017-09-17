@@ -1,0 +1,36 @@
+#! /bin/sh
+
+set -e
+
+if [ -n "$DEB_MAINT_PARAMS" ]; then
+    eval set -- "$DEB_MAINT_PARAMS"
+    if [ -z "$1" ] || [ "$1" != "configure" ]; then
+        exit 0;
+    fi
+fi
+
+# copy exynos5422-odroidxu3.dtb to /media/boot/ in case it exists
+if [ -f /boot/exynos5422-odroidxu3.dtb ]; then
+	if [ -d /media/boot ]; then
+		cp /boot/exynos5422-odroidxu3.dtb /media/boot/
+	fi
+fi
+
+if [ -f /boot/meson8b_odroidc.dtb ]; then
+        if [ -d /media/boot ]; then
+                cp /boot/meson8b_odroidc.dtb /media/boot/
+        fi
+fi
+
+if [ -f /boot/meson8b_odroidc.dts ]; then
+        if [ -d /media/boot ]; then
+                cp /boot/meson8b_odroidc.dts /media/boot/
+        fi
+fi
+
+if [ -f /boot/meson64_odroidc2.dtb ]; then
+        if [ -d /media/boot ]; then
+                cp /boot/meson64_odroidc2.dtb /media/boot/
+        fi
+fi
+

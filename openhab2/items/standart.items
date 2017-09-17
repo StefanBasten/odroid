@@ -1,0 +1,13 @@
+DateTime Datum  "Heutiges Datum [%1$tA, %1$td.%1$tm.%1$tY %1$tT]" <calendar> { channel="ntp:ntp:local:dateTime", knx="11.001:10/0/1,10.001:10/0/0"  }
+DateTime Occupancy "letzte Bewegung [%1$td.%1$tm %1$tH:%1$tM]"	<clock>
+DateTime Occupancy_UG "letzte Bewegung UG [%1$td.%1$tm %1$tH:%1$tM]"  <clock>
+
+Contact PingedItem_MacMini       "MacMini online [MAP(ping.map):%s]"    <smiley>     	(modbus) 	{fritzboxtr064="maconline:0C-4D-E9-99-C7-E1" }
+Contact PingedItem_Nicole        "Nicole zu Hause [MAP(ping.map):%s]"   <smiley>     	(modbus) 	{fritzboxtr064="maconline:9C-FC-01-30-D0-AD" }
+Contact PingedItem_Stefan        "Stefan zu Hause [MAP(ping.map):%s]"   <smiley>     	(modbus) 	{fritzboxtr064="maconline:18-AF-61-21-E7-66" }
+
+Number	burner			"Brennerstarts"
+Number  burnerd			"Brennerstarts heute"
+
+Switch Testmail
+

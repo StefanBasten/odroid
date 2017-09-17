@@ -1,0 +1,124 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.lang.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+
+
+rule "Word2bit"
+	when 
+		Item Register_0_0 received update
+	then	
+		var Number W2 = Register_0_0.state as DecimalType
+
+        if (W2 >= 32768)  { 
+        W2 = W2 - 32768
+        sendCommand(Bit515, OPEN)
+}       else {
+	 sendCommand(Bit515, CLOSED)
+}
+	if (W2 >= 16384)  {
+        W2 = W2 - 16384
+        sendCommand(Bit514, OPEN)
+}       else { 
+	sendCommand(Bit514, CLOSED)
+}	
+	if (W2 >= 8182) {
+        W2 = W2 - 8192
+        sendCommand(Bit513, OPEN)
+}       else {
+	sendCommand(Bit513, CLOSED)
+}	
+	if (W2 >= 4096) { 
+        W2 = W2 - 4096
+        sendCommand(Bit512, OPEN)
+}       else { 
+	sendCommand(Bit512, CLOSED)
+}
+	if (W2 >= 2048) { 
+        W2 = W2 - 2048
+        sendCommand(Bit511, OPEN)
+}       else { 
+	sendCommand(Bit511, CLOSED)
+}
+	if (W2 >= 1024) {
+        W2 = W2 - 1024
+        sendCommand(Bit510, OPEN)
+}       else {
+        sendCommand(Bit510, CLOSED)
+}
+	if (W2 >= 512) {
+        W2 = W2 - 512
+        sendCommand(Bit59, OPEN)
+}       else {
+        sendCommand(Bit59, CLOSED)
+}
+	if (W2 >= 256) {
+        W2 = W2 - 256
+        sendCommand(Bit58, OPEN)
+}       else {
+        sendCommand(Bit58, CLOSED)
+}
+	if (W2 >= 128) {
+        W2 = W2 - 128
+        sendCommand(Bit57, OPEN)
+}       else {
+        sendCommand(Bit57, CLOSED)
+}
+	if (W2 >= 64) {
+        W2 = W2 - 64
+        sendCommand(Bit56, OPEN)
+}       else {
+        sendCommand(Bit56, CLOSED)
+}
+	if (W2 >= 32) {
+        W2 = W2 - 32
+        sendCommand(Bit55, OPEN)
+}       else {
+        sendCommand(Bit55, CLOSED)
+}
+        if (W2 >= 16) {
+        W2 = W2 - 16
+        sendCommand(Bit54, OPEN)
+}       else {
+        sendCommand(Bit54, CLOSED)
+}
+        if (W2 >= 8) {
+        W2 = W2 - 8
+        sendCommand(Bit53, OPEN)
+}       else {
+        sendCommand(Bit53, CLOSED)
+}
+        if (W2 >= 4) {
+        W2 = W2 - 4
+        sendCommand(Bit52, OPEN)
+}       else {
+        sendCommand(Bit52, CLOSED)
+}
+        if (W2 >= 2) {
+        W2 = W2 - 2
+        sendCommand(Bit51, OPEN)
+}       else {
+        sendCommand(Bit51, CLOSED)
+}
+        if (W2 >= 1) {
+        W2 = W2 - 1
+        sendCommand(Bit50, OPEN)
+}       else {
+        sendCommand(Bit50, CLOSED)
+}
+postUpdate(xx, W2)	
+
+end
+

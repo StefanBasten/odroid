@@ -1,0 +1,173 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.lang.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+import org.eclipse.xtext.xbase.lib.Functions$Function2
+
+
+
+rule "Pumpenlaufzeit"
+
+        when 
+		Item Pumpsekunde received update or
+		Time cron "0 * * * * ?" or
+		System started
+        then 
+		Pumpe.postUpdate(Pumpstunde.state.toString + ":" + Pumpminute.state.toString + ":" + Pumpsekunde.state.toString)
+end
+
+rule "Mischerlaufzeit"
+
+        when 
+		Item Mischsekunde received update or
+		Time cron "0 * * * * ?" or
+		System started
+        then 
+		Misch.postUpdate(Mischstunde.state.toString + ":" + Mischminute.state.toString + ":" + Mischsekunde.state.toString)
+end
+
+rule "Bewässerung"
+
+	when
+		Time cron "55 59 23 * * ?"
+	then
+		var Number currLiter = Liter.state as DecimalType
+		var Number prevLiter = Liter.historicState(now().minusHours(24), "rrd4j").state as DecimalType
+		postUpdate(Liter_Tag, currLiter - prevLiter)
+end
+
+
+rule "Luftdruck"
+
+        when 
+		Item Arduino_3 received update
+        then 
+		Temp_pa.postUpdate(Arduino_3.state as DecimalType * 0.1)
+end
+
+
+rule "int2float"
+
+        when 
+		Item Register_0 received update
+        then 
+		Register_0_f.postUpdate(Register_0.state as DecimalType * 0.01)
+		Register_2_f.postUpdate(Register_2.state as DecimalType * 0.01)
+		Register_3_f.postUpdate(Register_3.state as DecimalType * 0.01)
+		Register_4_f.postUpdate(Register_4.state as DecimalType * 0.01)
+		Register_5_f.postUpdate(Register_5.state as DecimalType * 0.01)
+		Register_7_f.postUpdate(Register_7.state as DecimalType * 0.01)
+		VL_Soll.postUpdate(Register_8.state as DecimalType * 0.01)
+		EG_WZ_etrv_L_d.postUpdate(EG_WZ_etrv_L.state as DecimalType * 100)
+		EG_EZ_etrv_L_d.postUpdate(EG_EZ_etrv_L.state as DecimalType * 100)
+		EG_Bad_etrv_L_d.postUpdate(EG_Bad_etrv_L.state as DecimalType * 100)
+end
+
+rule "Brenner"
+
+        when
+                Item Brenner_Status changed from OFF to ON
+        then
+                if (Brenner_Status.state == ON) {
+                var int counter2 = 0
+                        if (burner.state instanceof DecimalType) {
+                        counter2 = (burner.state as DecimalType).intValue
+                        }
+                counter2 = counter2 + 1
+                burner.postUpdate(counter2)
+                }
+end
+
+rule "Minute Brenner"
+
+        when
+                Time cron "0 * * * * ?"
+        then
+
+
+        var Number burnh = burner.deltaSince(now.minusDays(0).withTimeAtStartOfDay) as DecimalType
+        postUpdate(burnerd, burnh)
+
+
+end
+
+rule "counter_oel"
+
+        when
+                Item zaehler changed from OFF to ON
+        then
+                if (zaehler.state == ON) {
+                var int counter1 = 0
+                        if (counter.state instanceof DecimalType) {
+                        counter1 = (counter.state as DecimalType).intValue
+                        }
+                counter1 = counter1 + 1
+                counter.postUpdate(counter1)
+                }
+
+end
+
+rule "counter_upd"
+
+        when
+                Item counter received update
+        then
+                Zaehler_oel.postUpdate(counter.state as DecimalType * 0.1)
+end
+
+
+
+
+rule "Verbrauch"
+
+        when
+                Time cron "55 59 23 * * ?"
+        then
+                var Number currOel = Zaehler_oel.state as DecimalType
+                var Number prevOel = Zaehler_oel.historicState(now().minusHours(24), "rrd4j").state as DecimalType
+	        postUpdate(Tagesoel, currOel - prevOel)
+end
+
+rule "Tank"
+
+        when
+                Item Zaehler_oel received update
+        then
+                var Number Tankleer = 44600.0
+                var Number Zaehoel = Zaehler_oel.state as DecimalType
+		postUpdate(Tankinhalt, Tankleer - Zaehoel)
+end
+
+rule "Minute"
+
+        when
+                Time cron "0 * * * * ?"
+        then
+                var Number Oelh = Zaehler_oel.deltaSince(now.minusDays(0).withTimeAtStartOfDay) as DecimalType
+        postUpdate(Tagesoelh, Oelh)
+
+
+end
+
+rule "Verbraucha"
+
+        when
+                Item Zaehler_oel received update
+        then
+                var Number Jahr = 41370.0
+                var Number Zaehoel = Zaehler_oel.state as DecimalType
+	        postUpdate(Jahresver, Zaehoel - Jahr)
+end
+

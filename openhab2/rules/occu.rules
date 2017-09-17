@@ -1,0 +1,37 @@
+
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.lang.Decimal
+import java.lang.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+
+
+rule "Bewegung im Haus Erdgeschoss wurde erkannt"
+        when
+                Item EG_EZ_Occu changed to ON
+        then
+                var local_time = java::util::Calendar::getInstance(TimeZone::getTimeZone("Europe/Berlin"))
+                postUpdate(Occupancy, new DateTimeType(local_time))
+end
+
+rule "Bewegung im Haus Untergeschoss wurde erkannt"
+        when
+                Item Occu_Untergeschoss_Flur changed to ON
+        then
+                var local_time = java::util::Calendar::getInstance(TimeZone::getTimeZone("Europe/Berlin"))
+                postUpdate(Occupancy_UG, new DateTimeType(local_time))
+end
+
+

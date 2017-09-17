@@ -1,0 +1,1 @@
+Bridge homematic:bridge:ccu_neu [ gatewayAddress="192.168.178.40", gatewayType="ccu" ] 

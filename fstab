@@ -1,0 +1,5 @@
+LABEL=boot	/media/boot	vfat	defaults,rw,owner,flush,umask=000 0 0
+
+UUID=e139ce78-9841-40fe-8823-96a304a09859 / ext4 errors=remount-ro,noatime 0 1
+UUID=7a6e7e26-5be5-4847-9a82-eea360426c51 /mnt ext2 defaults 0 2
+

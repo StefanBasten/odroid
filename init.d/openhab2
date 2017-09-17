@@ -1,0 +1,211 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          openhab2
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: openHAB2 server
+# Description:       Start / Stop openHAB2 server
+### END INIT INFO
+
+# Author: openHAB <openhab@openhab.org>
+#
+
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+OPENHAB_INST_DIR="/usr/share/openhab2"
+
+DESC="openHAB2 server"
+NAME=openhab2
+JAVA="/usr/bin/java"
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME
+SETOWNER=yes
+
+# Define LSB log_* functions.
+log_daemon_msg () {
+  echo $@
+}
+
+log_end_msg () {
+  val=$1
+  if [ $val -eq 0 ]; then
+    log_success_msg ""
+  else
+    log_failure_msg ""
+  fi
+  return $val
+}
+
+log_success_msg () {
+  echo " OK!"
+}
+
+log_failure_msg () {
+  echo " failed!"
+}
+
+# Depend on lsb-base (>= 3.2-14) to ensure that this file is present
+# and status_of_proc is working.
+
+if  [ -r /lib/lsb/init-functions ]; then
+  . /lib/lsb/init-functions
+elif [ -r /etc/init.d/functions ]; then
+  . /etc/init.d/functions
+fi
+
+# Read configuration variable file if it is present
+if [ -r /etc/default/openhab2 ]; then
+  . /etc/default/openhab2
+fi
+
+OPENHAB_CONF_DIR="/etc/openhab2"
+OPENHAB_DIR="/usr/share/openhab2"
+OPENHAB_HOME_DIR="/var/lib/openhab2"
+OPENHAB_USER_DATA_DIR="${OPENHAB_HOME_DIR}"
+
+if [ -z "$USER_AND_GROUP" ]; then
+  USER_AND_GROUP="openhab:openhab"
+fi
+
+if [ x"${OPENHAB_JAVA}" != x ]; then
+  JAVA="${OPENHAB_JAVA}"
+fi
+
+if [ -n "${EXTRA_JAVA_OPTS}" ]; then
+  export EXTRA_JAVA_OPTS
+fi
+
+if [ -n ${OPENHAB_HTTP_PORT} ]; then
+  export OPENHAB_HTTP_PORT
+fi
+
+if [ -n ${OPENHAB_HTTPS_PORT} ]; then
+  export OPENHAB_HTTPS_PORT
+fi
+
+
+if [ ! -x "${JAVA}" ]; then
+  log_failure_msg "no java executable found at ${JAVA}"
+  exit 2
+fi
+
+USER=`echo ${USER_AND_GROUP} | cut -d ":" -f 1`
+GROUP=`echo ${USER_AND_GROUP} | cut -d ":" -f 2`
+
+#Check whether the specified user exists
+if ! getent passwd "${USER}" > /dev/null 2>&1; then
+  log_failure_msg "runtime user doesn't exists"
+  exit 2
+fi
+
+#Check whether the specified group exists
+if ! getent group "${GROUP}" > /dev/null 2>&1; then
+  log_failure_msg "runtime group doesn't exists"
+  exit 2
+fi
+
+# Load the VERBOSE setting and other rcS variables
+if [ -r /lib/init/vars.sh ]; then
+  . /lib/init/vars.sh
+fi
+
+# Check to see if openHAB is currently running
+findpid() {
+  ps aux --sort=start_time | grep openhab2.*java | grep -v grep | awk '{print $2}' | tail -1
+}
+
+EXISTINGPID=$(findpid)
+
+# Kill/Wait pid
+killwaitpid() {
+  kpid=$1
+  echo -n "Waiting for openHAB to stop"
+  while kill -0 $kpid 2> /dev/null ; do
+    if [ $timeout -eq 60 ]; then
+      # finally kill the process if timeout is reached
+      echo "killing the process with pid $kpid"
+      kill -9 $kpid
+      break
+    else
+      echo -n "."
+      timeout=$((timeout+1))
+      sleep 1
+    fi
+  done
+}
+
+# Stop subroutine
+dostop() {
+  log_daemon_msg "Stopping $DESC" "$NAME"
+  if /usr/share/openhab2/runtime/bin/stop
+  then
+    # workaround stop returns before the openhab process has really stopped
+    timeout=0
+    if stpid=`cat /var/run/openhab2.pid 2> /dev/null`; then
+      killwaitpid $stpid
+    fi
+    rm -f $PIDFILE
+    # In case the pid in the pidfile was wrong, also kill/stop existing process
+    killwaitpid $EXISTINGPID
+    log_end_msg 0
+    return 0
+  else
+    log_end_msg 1
+    return 1
+  fi
+}
+
+# Start subroutine
+dostart() {
+  log_daemon_msg "Starting $DESC" "$NAME"
+  # OpenHAB may be shutting down if a process still exists but there's no PID file.
+  if [ -z "$EXISTINGPID" ] || [ ! -f $PIDFILE ];
+  then
+    if start-stop-daemon --start --quiet --pidfile $PIDFILE -c "${USER_AND_GROUP}" \
+                        --umask 002 --background --chdir ${OPENHAB_DIR} \
+                        --oknodo --exec /usr/share/openhab2/runtime/bin/start
+    then
+      timeout=0
+      # The correct process is only available once the wrapper scripts have finished.
+      until [ $timeout -eq 20 ] || [ x"$spid" != x ];
+      do
+        sleep 1
+        spid=$(findpid)
+        timeout=$((timeout+1))
+      done
+      echo "$spid" > $PIDFILE
+      log_end_msg 0
+      return 0
+    else
+      log_end_msg 1
+      return 1
+    fi
+  else
+    echo -n "Error: OpenHAB is already running with PID: $EXISTINGPID!"
+    log_end_msg 1
+    return 1
+  fi
+}
+
+case "$1" in
+  start)
+    dostart
+    ;;
+  stop)
+    dostop
+    ;;
+  status)
+    /usr/share/openhab2/runtime/bin/status
+    ;;
+  restart|force-reload)
+    log_daemon_msg "Restarting $DESC" "$NAME"
+    dostop
+    dostart
+    ;;
+  *)
+    echo "Usage: $SCRIPTNAME {start|stop|status|restart|force-reload}" >&2
+    exit 3
+    ;;
+esac

@@ -1,0 +1,58 @@
+// Hier kommt der Wohnzimmerheizkörper
+Group HK_WZ	 "Wohzimmerheizkörper"	[ "Thermostat" ]
+	Number  EG_WZ_etrv 
+		"Ist Temperatur WZ[%.1f °C]"          <temperature>
+                (HK_WZ)
+		[ "CurrentTemperature" ]      
+		{ channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:1#ACTUAL_TEMPERATURE" }	
+	Number  EG_WZ_etrv_s 
+		"Soll Temperatur WZ[%.1f °C]"       <radiator> 
+		(HK_WZ)
+		[ "TargetTemperature" ] 
+		{ channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:1#SET_POINT_TEMPERATURE",  knx="3/3/7" }
+	String  HK_WZ_HCM
+		"Mode WZ [%d]"
+		(HK_WZ)
+		[ "homekit:HeatingCoolingMode" ]
+		{ channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:1#CONTROL_MODE" }
+
+Number  EG_WZ_etrv_bat "Batterie Spannung [%.1f Volt]" <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:0#OPERATING_VOLTAGE" }
+Number  EG_WZ_etrv_L "Ventilstellung [%d]"             <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:1#LEVEL" }
+Number  EG_WZ_etrv_L_d "Ventilstellung [%d]"             <temperature>
+Number  EG_WZ_etrv_rssi "Empfangsstärke [%d]"                                             { channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:0#RSSI_PEER" }
+Number  EG_WZ_etrv_rssi_d "Sendestärke [%d]"                                              { channel="homematic:HMIP-eTRV:ccu_neu:000393C994D1A0:0#RSSI_DEVICE" }
+
+Number  EG_EZ_etrv "Ist Temperatur EZ[%.1f °C]"          <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:1#ACTUAL_TEMPERATURE" } 
+Number  EG_EZ_etrv_s "Soll Temperatur EZ[%.1f °C]"       <radiator> [ "TargetTemperature" ] { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:1#SET_POINT_TEMPERATURE",  knx="3/2/3" }
+Number  EG_EZ_etrv_bat "Batterie Spannung [%.1f Volt]" <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:0#OPERATING_VOLTAGE" }
+Number  EG_EZ_etrv_L "Ventilstellung [%d]"             <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:1#LEVEL" }
+Number  EG_EZ_etrv_L_d "Ventilstellung [%d]"             <temperature>  
+Number  EG_EZ_etrv_rssi "Empfangsstärke [%d]"						  { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:0#RSSI_PEER" }
+Number  EG_EZ_etrv_rssi_d "Sendestärke [%d]"						  { channel="homematic:HMIP-eTRV:ccu_neu:000397098A4A43:0#RSSI_DEVICE" }
+
+Number  EG_HT_fsm_rssi "Empfangsstärke [%d]db"                                             { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:0#RSSI_PEER" }
+Number  EG_HT_fsm_rssi_d "Sendestärke [%d]db"                                              { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:0#RSSI_DEVICE" }
+Number  EG_HT_fsm_Current "Strom [%d]Ampere"							 { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:5#CURRENT" }
+Number  EG_HT_fsm_Frequenz "Frequenz [%d]Herz"                                                   { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:5#FREQUENCY" }
+Number  EG_HT_fsm_Wirk "Wirkleistung [%d]kw"                                                   { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:5#ENERGY_COUNTER" }
+Number  EG_HT_fsm_Volt "Spannung [%d] Volt"                                                   { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:5#VOLTAGE" }
+Number  EG_HT_fsm_Leistung "Leistung [%d] Watt"                                                   { channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:5#POWER" }
+
+Number  EG_Bad_etrv "Ist Temperatur Bad[%.1f °C]"          <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:1#ACTUAL_TEMPERATURE" }
+Number  EG_Bad_etrv_s "Soll Temperatur Bad [%.1f °C]"       <radiator> [ "TargetTemperature" ] { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:1#SET_POINT_TEMPERATURE" }
+Number  EG_Bad_etrv_bat "Batterie Spannung [%.1f Volt]" <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:0#OPERATING_VOLTAGE" }
+Number  EG_Bad_etrv_L "Ventilstellung [%d]"             <temperature>                      { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:1#LEVEL" }
+Number  EG_Bad_etrv_L_d "Ventilstellung [%d]"             <temperature>
+Number  EG_Bad_etrv_rssi "Empfangsstärke [%d]"                                             { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:0#RSSI_PEER" }
+Number  EG_Bad_etrv_rssi_d "Sendestärke [%d]"                                              { channel="homematic:HMIP-eTRV:ccu_neu:000397098BBC67:0#RSSI_DEVICE" }
+
+
+
+
+
+
+
+
+ 
+
+

@@ -1,0 +1,124 @@
+Switch EG_KZ_Leuchter       		        "Lüster"                        (Lights) ["Lighting"]   { knx="3/6/1" }
+Switch EG_KZ_Downlights           		"Downlights"                    (Lights) ["Lighting"]   { knx="3/6/2" }
+Switch Licht_Untergeschoss_Wohnzimmer_KL        "Kronleuchter"          	(Wohnzimmer_UG)		{ knx="0/2/0" }
+Switch Licht_Untergeschoss_Wohnzimmer_Fenster   "Fensterleuchte"        	(Wohnzimmer_UG)		{ knx="0/2/5" }
+Switch Licht_Untergeschoss_Wohnzimmer_Sofa      "Deckenleuchte_Sofa"    	(Wohnzimmer_UG)		{ knx="0/2/2" }
+Switch Steckdose_Untergeschoss_Wohnzimmer       "Steckdosen_Fenster"    	(Wohnzimmer_UG)		{ knx="0/2/6" }
+Switch Steckdose_Untergeschoss_Wohnzimmer_Putz  "Fernsehsteckdose"      	(Wohnzimmer_UG)		{ knx="0/2/3" }
+Switch Licht_Untergeschoss_Kueche_Decke 	"Kinderbadleuchte"              (Kueche_UG)             { knx="0/1/0" }
+Switch Licht_Untergeschoss_Kueche_Theke 	"Thekenleuchte"                 (Kueche_UG)             { knx="0/1/1" }
+Switch Steckdose_Untergeschoss_Kueche_1 	"Steckdose_1"                   (Kueche_UG)             { knx="0/1/5" }
+Switch Steckdose_Untergeschoss_Kueche_2 	"Steckdose_2"                   (Kueche_UG)             { knx="0/1/6" }
+Switch Steckdose_Untergeschoss_Kueche_3 	"Steckdose_3"                   (Kueche_UG)             { knx="0/1/7" }
+Switch Occu_Untergeschoss_Flur                  "Deckenleuchte"                 (Flur_UG)               { knx="0/5/0" }
+Switch Licht_Untergeschoss_Bad  		"Deckenlicht 4er"               (Kueche_UG)             { knx="0/3/0" }
+Switch Licht_Untergeschoss_Flur_Decke   	"Deckenleuchte"                 (Flur_UG)               { knx="0/4/0" }
+Switch Licht_Untergeschoss_Bad_Spiegel          "Spiegelleuchte"                (Lights)                { knx="0/5/3" }
+Switch Licht_Untergeschoss_Abstell      	"Wandleuchte"                   (Abstellkammer_UG)      { knx="0/4/0" }
+Switch Licht_Untergeschoss_Hanna_TB     	"TB-Steckdose"                  (Schlafzimmer_UG)       { knx="0/0/3" }
+Switch Licht_Erdgeschoss_Wohnzimmer     	"Deckenleuchte"                 (Wohnzimmer)            { knx="3/3/1" }
+Dimmer Licht_Erdgeschoss_Wohnzimmer_Dimmer      "Dimmer"                    	(Wohnzimmer) ["Lighting"] { knx="<3/3/1+3/3/5,3/3/0,<3/3/3+3/3/4" }
+Switch TB_Erdgeschoss_Wohnzimmer        	"Fernsehsteckdose"              (Wohnzimmer) ["Lighting"] { knx="3/3/2" }
+Switch Licht_Erdgeschoss_Esszimmer      	"Deckenleuchte"                 (Esszimmer)  ["Lighting"] { knx="3/2/0" }
+Switch Licht_Erdgeschoss_Kueche         	"Küchenlicht"                   (Kueche)     ["Lighting"] { knx="3/1/1" }
+Switch Herd_Erdgeschoss_Kueche  		"Herd"                          (Kueche)     ["Lighting"] { knx="3/1/2" }
+Switch Licht_Erdgeschoss_Flur   		"Flurleuchte"                   (Flur)["Lighting"]        { knx="8/5/1" }
+Switch Licht_Erdgeschoss_Bad    		"Duschleuchte"                  (Bad) ["Lighting"]        { knx="3/4/0" }
+Switch Licht_Erdgeschoss_Abstellkammer          "Abstellkammerleuchte"         	(Abstellkammer)["Lighting"] { knx="3/0/0" }
+Switch Licht_Keller_Heizung             	"Deckenleuchte"                 (Keller)                { knx="2/1/0" }
+Switch Licht_Keller_Sauna_vorne         	"Deckenleuchte_vorne"           (Sauna)                 { knx="2/0/0" }
+Switch Licht_Keller_Sauna_mitte         	"Deckenleuchte_mitte"           (Sauna)                 { knx="2/0/1" }
+Switch Licht_Obergeschoss_Eltern_Decke          "Elternleuchte"         	(Eltern)["Lighting"]    { knx="8/1/2" }
+Switch Licht_Obergeschoss_Eltern_Schrank        "Schrankleuchte"        	(Eltern)                { knx="8/1/3" }
+Switch Licht_Obergeschoss_Eltern_links          "Papa Bettleuchte"      	<tele> (Eltern) ["Lighting"] { knx="8/1/4" }
+Switch Licht_Obergeschoss_Eltern_rechts 	"Mama Bettleuchte"              <lamp> (Eltern) ["Lighting"] { knx="8/1/5" }
+Switch Licht_Obergeschoss_Kind          	"Deckenleuchte Kind"            (Kind)          ["Lighting"] { knx="8/0/2" }
+Dimmer Licht_Obergeschoss_Bad           	"Deckenleuchte"                 (Badezimmer)            { knx="<8/2/3+8/2/10,8/2/5,<8/2/8+8/2/9" }
+Switch Brenner_Status                   	"Brenner Ein/Aus"               (Heizung)               { knx="<4/5/3" }
+Switch Licht_Garage                     	"Garagenlicht"                  (Garage)    ["Lighting"] { knx="7/1/0" }
+Switch Tor_Garage                       	"Garagentor"                    (Garage)    ["Lighting"] { knx="7/0/0" }
+Contact Tor_Zustand                     	"Garagentor [MAP(de.map):%s]"   <garagedoor>   (Garage) { knx="6/1/0" }
+Switch Pumpe_UG_Status                  	"Pumpe_Untergeschoss Ein/Aus"   (Heizung)               { knx="<4/5/7" }
+Switch Pumpe_OG_Status                  	"Pumpe_Obergeschoss Ein/Aus"    (Heizung)               { knx="<4/5/9" }
+Switch Licht_Obergeschoss_Speicher      	"Deckenleuchte"                 (Speicher)              { knx="8/4/0" }
+Switch Licht_Obergeschoss_Flur          	"Deckenleuchte"                 (Flur_OG)               { knx="8/5/0" }
+Switch Aussenl_Tuer                     	"Aussenleuchte"                 (Aussenbel) ["Lighting"] { knx="1/0/0" , channel="homematic:HmIP-FSM:ccu_neu:000895699E669A:2#STATE" }
+Switch Aussenl_Balkon                   	"Balkonleuchte"                 (Aussenbel)             { knx="3/2/1" }
+Switch Aussen_Baum                      	"Baumbeleuchtung"               (Aussenbel)             { knx="1/0/3" }
+Switch zaehler                          	"Zaehler"                                               { knx="2/1/1" }
+Switch Steckdose_Fernseh_Kaminzimmer    	"Fernsehsteckdose" <plug>       (Kaminzimmer)           { knx="3/6/0" }
+Switch EG_EZ_Occu 				"Bewegung" 						{ knx="3/2/1" }
+Switch UG_Hanna_Licht                           "Deckenleuchte"                                         { knx="0/0/1" }
+
+
+Rollershutter Rolladen_Zentral          "Zentral Auf/Zu"                                                { knx="3/5/9 , 3/5/8" }
+Switch Rollo_auf			"Rolladen auf"		["Lighting"]  
+Switch Rollo_zu				"Rolladen zu"		["Lighting"]  
+
+Rollershutter Rolladen_Obergeschoss_Bad_OG "Rolladen"                           (Badezimmer)            { knx="8/2/1 , 8/2/0" }
+Rollershutter Rolladen_Obergeschoss_Eltern "Rolladen"                           (Eltern)                { knx="8/1/1, 8/1/0" }
+Rollershutter Rolladen_Obergeschoss_Kind "Rolladen"                             (Kind)                  { knx="8/0/1, 8/0/0" }
+Rollershutter Rolladen_Obergeschoss_Flur "Rolladen"                             (Flur)                  { knx="8/5/3, 8/5/2" }
+Rollershutter Rolladen_Erdgeschoss_Wohnzimmer "Rolladen"                        (Wohnzimmer)            { knx="3/5/6, 3/5/7" }
+Rollershutter Rolladen_Erdgeschoss_Esszimmer_Sportplatz "Rolladen Sportplatz"   (Esszimmer)             { knx="3/5/4, 3/5/5" }
+Rollershutter Notauf				    "Rolladen Balkon"           (Esszimmer)             { knx="3/5/2, 3/5/3" }
+Rollershutter Rolladen_Erdgeschoss_Kueche "Rolladen"                            (Kueche)                { knx="3/5/1, 3/5/0" }
+Rollershutter Rolladen_Untergeschoss_Bad "Rolladen"                             (Kueche_UG)             { knx="0/3/5, 0/3/6" }
+Rollershutter Rollo_EG_KZ_alle "Rolladen"                                       (Kaminzimmer)           { knx="3/6/17, 3/6/16" }
+Rollershutter Rollo_EG_KZ_Strasse "Rolladen"                                    (Kaminzimmer)           { knx="3/6/13, 3/6/12" }
+Rollershutter Rollo_EG_KZ_Kasperlinks "Rolladen"                                (Kaminzimmer)           { knx="3/6/11, 3/6/10" }
+Rollershutter Rollo_EG_KZ_Kasperrechts "Rolladen"                               (Kaminzimmer)           { knx="3/6/15, 3/6/14" }
+Rollershutter Rolladen_Untergeschoss_Luci       "Rolladen"                      (Wohnzimmer_UG)         { knx="0/2/8, 0/2/7" }
+Rollershutter Rolladen_Untergeschoss_Hanna      "Rolladen"                      (Schlafzimmer_UG)       { knx="0/0/8, 0/0/7" }
+
+
+Number  Wirkenergie               "Zählerstand Strom [%d kWh]"           <zaehler>              (Strom)                 { knx="13.013:9/0/0" }
+Number  Tageswirk                 "gestriger Verbrauch Strom [%.1f kWh]"   <zaehler>              (Strom)
+Number  Tageswirkh                "heutiger Verbrauch Strom [%.0f Wh]"   <zaehler>              (Strom)
+Number  Jahresstrom               "Jahresverbrauch [%.1f kWh]"           <zaehler>              (Strom)
+Number  Wirkleistung              "Wirkleistung [%.0f W]"                <leistung>             (Strom)		          { knx="14.056:9/0/1" }
+Number  Wirkleistung_max          "Wirkleistung Maximum [%.0f W]"        <leistung>             (Strom)
+Number  Wirkleistung_min          "Wirkleistung Minimum [%.0f W]"        <leistung>             (Strom)
+Number  Wirkenergiew              "Wirkenergie [%.0f Wh]"                <leistung>             (Strom)                 { knx="13.010:9/0/2" }
+Number  Wirkenergie15             "Wirkenergie 15min [%.0f Wh]"          <leistung>             (Strom)                 { knx="13.010:9/0/3" }
+Number  Wirkenergie15_max         "Wirkenergie 15min Maximum [%.0f Wh]"  <leistung>             (Strom)
+Number  Wirkenergie60             "Wirkenergie 60min [%.0f Wh]"          <leistung>             (Strom)                 { knx="13.010:9/0/4" }
+Number  Wirkenergie60_max         "Wirkenergie 60min Maximum [%.0f Wh]"  <leistung>             (Strom)
+Number  EG_WZ_T1		  "Temperatur WZ [%.2f °C]"   <temperature>                    [ "CurrentTemperature" ] { knx="<3/3/6" }
+Number  EG_WZ_S1		  "Soll KNX [%.2f °C]" <temperature>	{ knx="<3/3/7" }
+Number  EG_EZ_T1                  "Temperatur EZ [%.2f °C]"   <temperature>                    [ "CurrentTemperature" ] { knx="<3/2/4" }
+Number  EG_EZ_S1                  "Soll KNX [%.2f °C]" <temperature>                                                    { knx="<3/2/3" }
+Number  EG_KZ_T1                  "Temperatur KZ [%.2f °C]"   <temperature>                    [ "CurrentTemperature" ] { knx="<3/6/4" }
+Number  EG_KZ_S1                  "Soll KNX [%.2f °C]" <temperature>                                                    { knx="<3/6/3" }
+
+Number  Aussen_min                "Aussen heutiges Min [%.2f °C]"            <temperature>   (SPST) [ "CurrentTemperature" ] 
+Number  Aussen_max                "Aussen heutiges Max [%.2f °C]"            <temperature>   (SPST) [ "CurrentTemperature" ] 
+Number  Aussen_dur                "Aussen durchschnitt [%.2f °C]"            <temperature>   (SPST) [ "CurrentTemperature" ] 
+Number  Solar_min                 "Solar min [%.2f °C]"            	     <temperature>   (SPST) [ "CurrentTemperature" ] 
+Number  Solar_max                 "Solar max [%.2f °C]"             	     <temperature>   (SPST) [ "CurrentTemperature" ] 
+
+Number Sollwert_Bad_UG                          "Sollwert [%.1f °C]" <temperature> (Kueche_UG) { knx="<4/3/2" }
+Number Temp_Keller_Heizung_Kueche_UG            "Badtemperatur [%.1f °C]" <temperature> (Heizung , Kueche_UG) { knx="<4/3/0" }
+Number Ventil_Keller_Heizung_Kueche_UG          "Ventil Ist Badezimmer [%d %%]" <heating> (Heizung , Kueche_UG) { knx="<5.001:4/3/1" }
+Number Ventil_Soll_Keller_Heizung_Kueche_UG     "Ventil Soll Badezimmer [%d %%]" <heating> (Heizung , Kueche_UG) { knx="<5.001:4/3/5" }
+
+Number Sollwert_SZ_UG                          "Sollwert [%.1f °C]" <temperature> (Schlafzimmer_UG) { knx="<4/4/2" }
+Number Temp_Keller_Heizung_SZ_UG                "Schlafzimmertemperatur [%.1f °C]" <temperature> (Heizung , Schlafzimmer_UG) { knx="<4/4/0" }
+Number Ventil_Keller_Heizung_SZ_UG              "Ventil Ist Schlafzimmer [%d %%]" <heating> (Heizung , Schlafzimmer_UG) { knx="<5.001:4/4/1" }
+Number Ventil_Soll_Keller_Heizung_SZ_UG         "Ventil Soll Schlafzimmer [%d %%]" <heating> (Heizung , Schlafzimmer_UG) { knx="<5.001:0/0/5" }
+
+Number Sollwert_Flur_OG                          "Setpoint Flur [%.1f °C]" <temperature> (Flur_OG) [ "TargetTemperature" ] { knx="<8/5/4" }
+Number Temp_Flur_OG                              "Flurtemperatur OG [%.1f °C]" <temperature> (Flur_OG) [ "CurrentTemperature" ] { knx="<8/5/5" }  
+Number Ventil_Flur_OG                            "Ventil Ist  [%d %%]" <heating> (Flur_OG) { knx="<5.001:8/5/7" }
+Number Ventil_Soll_Flur_OG                       "Ventil Soll [%d %%]" <heating> (Flur_OG) { knx="<5.001:8/5/6" }
+
+Number Sollwert_Bad_OG                          "Setpoint Bad OG [%.1f °C]" <temperature> (Flur_OG) [ "TargetTemperature" ] { knx="<8/2/7" }
+Number Temp_Bad_OG                              "Badtemperatur OG [%.1f °C]" <temperature> (Flur_OG) [ "CurrentTemperature" ] { knx="<8/2/4" }
+Number Ventil_Bad_OG                            "Ventil Ist  [%d %%]" <heating> (Flur_OG) { knx="<5.001:8/2/6" }
+Number Ventil_Soll_Bad_OG                       "Ventil Soll [%d %%]" <heating> (Flur_OG) { knx="<5.001:8/2/2" }
+
+Number Temp_Keller_Heizung_Kessel               "Kesseltemperatur [%.1f °C]" <temperature> (Heizung)    { knx="<4/5/1" }
+Number Temp_Keller_Heizung_Aussen               "Aussentemperatur [%.1f °C]" <temperature> (Heizung, Wetter) { knx="<4/5/0" }
+Number Temp_Keller_Heizung_Boiler               "Boilertemperatur [%.1f °C]" <temperature> (Heizung) { knx="<4/5/2" }
+Number Temp_Keller_Heizung_VL_UG                "Vorlauf_UG_Temperatur [%.1f °C]" <temperature> (Heizung) { knx="<4/5/6" }
+Number Temp_Keller_Heizung_VL_OG                "Vorlauf_OG_Temperatur [%.1f °C]" <temperature> (Heizung) { knx="<4/5/8" }

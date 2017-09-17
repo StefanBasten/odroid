@@ -1,0 +1,8 @@
+rule "Waschmaschine"
+    when
+        Item Switch_Dect200_2 changed from ON to OFF
+    then
+        logInfo("Waschmaschine","Ende")
+        postUpdate(Waschmaschine_Time, new DateTimeType())
+        sendMail("snbasten@gmail.com","Waschmaschine fertig","seit " + Waschmaschine_Time.state.format ("%1$td.%1$tm %1$tH:%1$tM")  )
+end

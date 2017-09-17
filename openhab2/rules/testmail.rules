@@ -1,0 +1,15 @@
+
+
+rule "Testmail"
+
+        when
+                Item Testmail changed from OFF to ON
+        then
+        sendMail("snbasten@gmail.com","Testmail","Testmail")
+        createTimer(now.plusSeconds(10)) [|
+        sendCommand(Testmail,OFF)
+        logInfo("Testmail","gesendet")
+        ]
+end
+
+

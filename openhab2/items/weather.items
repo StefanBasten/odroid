@@ -1,0 +1,42 @@
+
+
+DateTime ObservationTime        "Letzte Messung [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"<clock> (Wetter)        {weather="locationId=home, type=condition, property=observationTime"}
+DateTime LastUpdate             "Letztes Update [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"<clock> (Wetter)        {weather="locationId=home, type=condition, property=lastUpdate"}
+Number   Temperature		"Temperatur DWD[%.2f °C]"		<temperature>	(Wetter) [ "CurrentTemperature" ]  {weather="locationId=home, type=temperature, property=current"}
+Number   Temp_Feel		"Temperatur gefühlt [%.2f °C]"		<temperature>	(Wetter)	{weather="locationId=home, type=temperature, property=feel"}
+Number	 Luftfeuchte		"Luftfeuchte [%d %%]"			<humidity>	(Wetter) [ "CurrentHumidity" ]	{weather="locationId=home, type=atmosphere, property=humidity"}
+Number   Visibility		"Sichtweite [%.2f km]"			<wind>		(Wetter)	{weather="locationId=home, type=atmosphere, property=visibility"}
+Number   Pressure		"Luftdruck [%.2f mbar]"			<pressure>      (Wetter)	{weather="locationId=home, type=atmosphere, property=pressure"}
+String   Condition		"Sicht [MAP(weather_de.map):%s]"	<wind>		(Wetter)	{weather="locationId=home, type=condition, property=text"}
+Number   Temp_Min		"Temperatur min [%.2f °C]"		<temperature>	(Wetter)	{weather="locationId=home, forecast=0, type=temperature, property=min"}
+Number   Temp_Max		"Temperatur max [%.2f °C]"		<temperature>	(Wetter)	{weather="locationId=home, forecast=0, type=temperature, property=max"}
+Number   Temp_Minmo		"Temperatur morgen min [%.2f °C]"	<temperature>	(Wetter)	{weather="locationId=home, forecast=1, type=temperature, property=min"}
+Number   Temp_Maxmo		"Temperatur morgen max [%.2f °C]"	<temperature>	(Wetter)	{weather="locationId=home, forecast=1, type=temperature, property=max"}
+Number   Wind_Speed		"Windgeschwindikeit [%.2f km/h]"	<wind>		(Wetter)	{weather="locationId=home, type=wind, property=speed"}
+String   Wind_Direction		"Wind Richtung [%s]"			<wind>		(Wetter)	{weather="locationId=home, type=wind, property=direction"}
+Number   Wind_Degree		"Wind Richtung Grad [%.0f °]"		<wind>		(Wetter)	{weather="locationId=home, type=wind, property=degree"}
+String Pressure_Trend "Luftdrucktrend [%s]"				<pressure>	(Wetter)	{weather="locationId=home, type=atmosphere, property=pressureTrend"}
+Number Ozone "Ozone [%d ppm]"						<ozone>		(Wetter)	{weather="locationId=home, type=atmosphere, property=ozone"}
+Number UV_Index "UV Index"						<uv>		(Wetter)	{weather="locationId=home, type=atmosphere, property=uvIndex, scale=0"}
+Number Clouds "Wolken [%.0f %%]"							(Wetter)	{weather="locationId=home, type=clouds, property=percent"}
+String Condition_ID "Condition id [%s]"							(Wetter)	{weather="locationId=home, type=condition, property=id"}
+String CommonId " Sicht [MAP(weather_de.map):%s]"					(Wetter)	{weather="locationId=home, type=condition, property=commonId"}
+Number Rain "Regen aktuell [%.2f mm/h]"							(Wetter)	{weather="locationId=home, type=precipitation, property=rain"}
+Number Snow "Schnee aktuell [%.2f mm/h]"						(Wetter)	{weather="locationId=home, type=precipitation, property=snow"}
+Number Precip_Probability "Niederschlagsrisiko [%d %%]"					(Wetter)	{weather="locationId=home, type=precipitation, property=probability"}
+Number Precip_Total "Niederschlag [%d mm]"						(Wetter)	{weather="locationId=home, type=precipitation, property=total"}
+Number Temp_Dewpoint "Taupunkt [%.2f °C]"				<temperature>	(Wetter)	{weather="locationId=home, type=temperature, property=dewpoint"}
+Number Wind_Speed_Beaufort "Windspeed Beaufort [%d]"					(Wetter)	{weather="locationId=home, type=wind, property=speed, unit=beaufort"}
+Number Wind_Speed_Knots "Windspeed Knoten [%.2f kn]"					(Wetter)	{weather="locationId=home, type=wind, property=speed, unit=knots"}
+Number Wind_Speed_Mps "Windspeed Meilen/s[%.2f mps]"					(Wetter)	{weather="locationId=home, type=wind, property=speed, unit=mps"}
+Number Wind_Speed_Mph "Windspeed Meilen/h[%.2f mph]"					(Wetter)	{weather="locationId=home, type=wind, property=speed, unit=mph"}
+Number Wind_Gust "Windböe [%.2f km/h]"							(Wetter)	{weather="locationId=home, type=wind, property=gust"}
+Number Wind_Gust_Beaufort "Windböe Beaufort [%d]"					(Wetter)	{weather="locationId=home, type=wind, property=gust, unit=beaufort"}
+Number Wind_Gust_Knots "Windböe Knoten [%.2f kn]"					(Wetter)	{weather="locationId=home, type=wind, property=gust, unit=knots"}
+Number Wind_Gust_Mps "Windböe Meilen/s [%.2f mps]"					(Wetter)	{weather="locationId=home, type=wind, property=gust, unit=mps"}
+Number Wind_Gust_Mph "Windböe Meilen/h [%.2f mph]"					(Wetter)	{weather="locationId=home, type=wind, property=gust, unit=mph"}
+Number Wind_Chill "Wind chill [%.2f °C]"						(Wetter)	{weather="locationId=home, type=wind, property=chill"}
+String Station_Name "Station Name [%s]"							(Wetter)	{weather="locationId=home, type=station, property=name"}
+String Station_Id "Station Id [%s]"							(Wetter)	{weather="locationId=home, type=station, property=id"}
+Number Station_Latitude "Station Latitude [%.6f]"			<globe>		(Wetter)	{weather="locationId=home, type=station, property=latitude, scale=6"}
+Number Station_Longitude "Station Longitude [%.6f]"			<globe>		(Wetter)	{weather="locationId=home, type=station, property=longitude, scale=6"}

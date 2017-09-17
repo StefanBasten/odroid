@@ -1,0 +1,50 @@
+/* Network information*/
+String Network_AdapterName          { channel="systeminfo:computer:work:network#networkDisplayName" }
+String Network_Name                 { channel="systeminfo:computer:work:network#networkName" }
+String Network_IP                   { channel="systeminfo:computer:work:network#ip" }
+String Network_Mac                  { channel="systeminfo:computer:work:network#mac" }
+Number Network_DataSent             { channel="systeminfo:computer:work:network#dataSent" }
+Number Network_DataRecevied         { channel="systeminfo:computer:work:network#dataReceived" }
+Number Network_PackagesSent         { channel="systeminfo:computer:work:network#packagesSent" }
+Number Network_PackagesRecevied     { channel="systeminfo:computer:work:network#packagesReceived" }
+
+/* CPU information*/
+String CPU_Name                     { channel="systeminfo:computer:work:cpu#name" }
+String CPU_Description              { channel="systeminfo:computer:work:cpu#description" }
+Number CPU_Load                     { channel="systeminfo:computer:work:cpu#load"} 
+Number CPU_Load1                    { channel="systeminfo:computer:work:cpu#load1" }
+Number CPU_Load5                    { channel="systeminfo:computer:work:cpu#load5" }
+Number CPU_Load15                   { channel="systeminfo:computer:work:cpu#load15" }
+Number CPU_Threads                  { channel="systeminfo:computer:work:cpu#threads" }
+Number CPU_Uptime                   { channel="systeminfo:computer:work:cpu#uptime" }
+
+/* Drive information*/
+String Drive_Name                    { channel="systeminfo:computer:work:drive#name" }
+String Drive_Model                   { channel="systeminfo:computer:work:drive#model" }
+String Drive_Serial                  { channel="systeminfo:computer:work:drive#serial" }
+
+/* Storage information*/
+String Storage_Name                  { channel="systeminfo:computer:work:storage#name" }
+String Storage_Type                  { channel="systeminfo:computer:work:storage#type" }
+String Storage_Description           { channel="systeminfo:computer:work:storage#description" }
+Number Storage_Available             { channel="systeminfo:computer:work:storage#available" }
+Number Storage_Used                  { channel="systeminfo:computer:work:storage#used" }
+Number Storage_Total                 { channel="systeminfo:computer:work:storage#total" }
+Number Storage_Available_Percent     { channel="systeminfo:computer:work:storage#availablePercent" }
+
+/* Memory information*/
+Number Memory_Available              { channel="systeminfo:computer:work:memory#available" }
+Number Memory_Used                   { channel="systeminfo:computer:work:memory#used" }
+Number Memory_Total                  { channel="systeminfo:computer:work:memory#total" }
+Number Memory_Available_Percent      { channel="systeminfo:computer:work:memory#availablePercent" }
+
+/* Swap memory information*/
+Number Swap_Available                { channel="systeminfo:computer:work:swap#available" }
+Number Swap_Used                     { channel="systeminfo:computer:work:swap#used" }
+Number Swap_Total                    { channel="systeminfo:computer:work:swap#total" }
+Number Swap_Available_Percent        { channel="systeminfo:computer:work:swap#availablePercent" }
+
+/* Sensors information*/
+Number Sensor_CPUTemp                { channel="systeminfo:computer:work:sensors#cpuTemp" }
+Number Sensor_CPUVoltage             { channel="systeminfo:computer:work:sensors#cpuVoltage" }
+

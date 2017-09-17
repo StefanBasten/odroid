@@ -1,0 +1,20 @@
+rule "Rolladen auf"
+
+        when Item Rollo_auf changed from OFF to ON
+        then
+                sendCommand(Rolladen_Zentral,UP)
+                if (Rollo_auf.state==ON) {
+                createTimer(now.plusSeconds(5)) [sendCommand(Rollo_auf,OFF)]
+                }
+end
+
+rule "Rolladen zu"
+
+        when Item Rollo_zu changed from OFF to ON
+        then
+                sendCommand(Rolladen_Zentral,DOWN)
+                if (Rollo_zu.state==ON) {
+                createTimer(now.plusSeconds(5)) [sendCommand(Rollo_zu,OFF)]
+                }
+end
+

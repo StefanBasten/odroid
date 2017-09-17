@@ -1,0 +1,3 @@
+deb http://dl.bintray.com/openhab/apt-repo2 stable main
+#deb https://openhab.jfrog.io/openhab/openhab-linuxpkg unstable main
+

@@ -1,0 +1,32 @@
+#! /bin/sh
+
+set -e
+
+version="$1"
+
+if [ -n "$DEB_MAINT_PARAMS" ]; then
+    eval set -- "$DEB_MAINT_PARAMS"
+    if [ -z "$1" ] || [ "$1" != "configure" ]; then
+        exit 0;
+    fi
+fi
+
+# passing the kernel version is required
+[ -z "$version" ] && exit 1
+
+AARCH=`uname -m`
+
+if [ "$AARCH" = "aarch64" ]; then
+	export ARCH="arm64"
+else
+	export ARCH="arm"
+fi
+
+mkimage -A $ARCH -O linux -T ramdisk -C none -a 0 -e 0 -n uInitrd -d /boot/initrd.img-$version /boot/uInitrd-$version
+
+# checking if /media boot exists if so, then copy uInitrd there (should be Ubuntu)
+if [ ! -d /media/boot ]; then
+	cp /boot/uInitrd-$version /boot/uInitrd
+else
+	cp /boot/uInitrd-$version /media/boot/uInitrd
+fi

@@ -1,0 +1,129 @@
+Group modbus
+
+Number Test	    "Test [%.2f]"		    	<temperature>	(modbus)
+Number Register_0_0     "Temp [%d]"                     <temperature>   {modbus="slave1:0"}
+Number Register_0 	"Temperature_0 [%d]"		<temperature>	{modbus="slave1:1"}
+Number Register_0_f 	"Puffer oben [%.2f °C]"		<temperature>	(modbus)
+Number Register_1 	"Temperature_1 [%d]"		<temperature>	{modbus="slave1:2"}
+Number Register_1_f 	"Solar Dach [%.2f °C]"		<temperature>	(modbus) 
+Number Register_2 	"Temperature_2 [%d]"		<temperature>   {modbus="slave1:3"}
+Number Register_2_f 	"Puffer mitte [%.2f °C]"	<temperature>	(modbus) 
+Number Register_3 	"Temperature_3 [%d]"		<temperature>	{modbus="slave1:4"}
+Number Register_3_f 	"Solarleitung [%.2f °C]"	<temperature>	(modbus) 
+Number Register_4 	"Temperature_4 [%d]"		<temperature>	{modbus="slave1:5"}
+Number Register_4_f 	"Rücklauf [%.2f °C]"		<temperature>	(modbus) 
+Number Register_5 	"Temperature_5 [%d]"		<temperature>	{modbus="slave1:6"}
+Number Register_5_f 	"Vorlauf [%.2f °C]"		<temperature>	(modbus) 
+Number Register_6 	"Temperature_6 [%d]"		<temperature>	{modbus="slave1:7"}
+Number Register_6_f 	"Aussentemperatur [%.2f °C]"	<temperature>	(modbus) 
+Number Register_7       "Temperature_7 [%d]"            <temperature>   {modbus="slave1:8"}
+Number Register_7_f     "Kessel [%.2f °C]"              <temperature>   (modbus)
+Number Countpump        "Count Solarpumpe [%d]"         <temperature>   {modbus="slave1:9"}
+Number Countmischer     "Count Mischer [%d]"            <temperature>   {modbus="slave1:10"}
+Number Pumpsekunde      "Sekunden Pumpe [%d]"           <temperature>   {modbus="slave1:11"}
+Number Pumpminute       "Minute Pumpe [%d]"             <temperature>   {modbus="slave1:12"}
+Number Pumpstunde       "Stunde Pumpe [%d]"             <temperature>   {modbus="slave1:13"}
+String Pumpe            "Pumpenlaufzeit [%s]"             
+Number Mischsekunde     "Sekunden Mischer [%d]"         <temperature>   {modbus="slave1:14"}
+Number Mischminute      "Minute Mischer [%d]"           <temperature>   {modbus="slave1:15"}
+Number Mischstunde      "Stunde Mischer [%d]"           <temperature>   {modbus="slave1:16"}
+String Misch            "Mischerlaufzeit [%s]"
+Number  Register_8      "Temperature_8 [%d]"                             {modbus="slave1:19"}
+Number  VL_Soll         "Vorlauf_Soll [%.2f °C]"        <temperature>   
+Number  Register_9      "G_Aussentemp [%d]"                              {modbus="slave1:20"}
+Number  G_AT            "gleitende Aussentemp[%.2f °C]" <temperature>   
+
+
+Number Frequency       "Frequency [%f]"                          (modbus)    {modbus="slave2:0"}
+Number Frequency_r     "Frequency Real [%f]"                     (modbus)    {modbus="slave2:1"}
+Number Zaehler         "Zähler [%f]"                             (modbus)    {modbus="slave2:2"}
+Number Zaehler_r       "Zähler Real[%f]"                         (modbus)    {modbus="slave2:3"}
+Number Liter_min       "Liter Minute[%.2f]"     <faucet>         (Garden)    {modbus="slave2:4"}
+Number Liter           "Liter  [%.2f]"          <faucet>         (Garden)    {modbus="slave2:5"}
+Number Liter_Tag       "Liter Tag [%.2f]"			 (Garden)
+Number Tagesliter
+Number Jahresliter
+
+Switch coil0		"coil 0"                          (modbus)    {modbus="slave3:0"}
+Switch coil1            "coil 1"                          (modbus)    {modbus="slave3:1"}
+Switch coil2            "coil 2"                          (modbus)    {modbus="slave3:2"}
+Switch coil3            "coil 3"                          (modbus)    {modbus="slave3:3"}
+
+Number Gardentemp       "Gartentemp [%f]"                 (modbus)    {modbus="slave4:1"}
+Number Gardenhumidy     "Gartenfeuchte [%f]"              (modbus)    {modbus="slave4:2"}
+Number Gardendew	"Taupunkt [%f]"
+Number Gardenfeel	"Garten gefühlt [%f]"
+
+Switch coil10            "24V Leistungsschalter"              (modbus)    {modbus="slave5:0"}
+Switch coil11            "230V Leistungsschalter"             (modbus)    {modbus="slave5:1"}
+Switch coil12            "Eingang 2"                          (modbus)    {modbus="slave5:2"}
+Switch coil13            "Eingang 3"                          (modbus)    {modbus="slave5:3"}
+Contact coil101          "24V Leistungsschalter [MAP(bit.map):%s]" <switch2> (modbus)    {modbus="slave5:0"}
+Contact coil111          "230V Leistungsschalter [MAP(bit.map):%s]" <switch2> (modbus)    {modbus="slave5:1"}
+
+
+/*
+Number 317_10 	    "Int_10 [%d]"		    <temperature>	(modbus)    {modbus="slave2:10"}
+Number 317_11 	    "Int_11 [%d]"		    <temperature>	(modbus)    {modbus="slave2:11"}
+Number 317_12	    "Int_12 [%d]"		    <temperature>	(modbus)    {modbus="slave2:12"}
+Number 317_13	    "Int_13 [%d]"		    <temperature>	(modbus)    {modbus="slave2:13"}
+Number 317_14	    "Int_14 [%d]"		    <temperature>	(modbus)    {modbus="slave2:14"}
+Number 317_15	    "Int_15 [%d]"		    <temperature>	(modbus)    {modbus="slave2:15"}
+Number 317_16 	    "Int_16 [%d]"		    <temperature>	(modbus)    {modbus="slave2:16"}
+Number 317_17 	    "Int_17 [%d]"		    <temperature>	(modbus)    {modbus="slave2:17"}
+Number 317_18 	    "Int_18 [%d]"		    <temperature>	(modbus)    {modbus="slave2:18"}
+Number 317_19 	    "Int_19 [%d]"		    <temperature>	(modbus)    {modbus="slave2:19"}
+Number 317_20 	    "Int_20 [%d]"		    <temperature>	(modbus)    {modbus="slave2:20"}
+Number 317_21 	    "Int_21 [%d]"		    <temperature>	(modbus)    {modbus="slave2:21"}
+Number 317_22 	    "Int_22 [%d]"		    <temperature>	(modbus)    {modbus="slave2:22"}
+Number 317_23 	    "Int_23 [%d]"		    <temperature>	(modbus)    {modbus="slave2:23"}
+
+Number Arduino_0    "Arduino Int_0 [%d]"            <temperature>       (modbus)    {modbus="slave3:0"}
+Number Arduino_1    "Arduino Int_1 [%d]"            <temperature>       (modbus)    {modbus="slave3:1"}
+Number Arduino_2    "Arduino Int_2 [%d]"            <temperature>       (modbus)    {modbus="slave3:2"}
+Number Arduino_2_f  "Feuchte [%.2f %%]"             <humidity>          (modbus)   
+Number Arduino_3    "Arduino Int_3 [%d]"            <temperature>       (modbus)    {modbus="slave3:3"}
+Number Arduino_3_f  "Temperatur [%.2f °C]"          <temperature>       (modbus)
+Number Arduino_4    "Arduino Int_4 [%d]"            <temperature>       (modbus)    {modbus="slave3:4"}
+Number Arduino_5    "Arduino Int_5 [%d]"            <temperature>       (modbus)    {modbus="slave3:5"}
+Number Arduino_6    "Arduino Int_6 [%d]"            <temperature>       (modbus)    {modbus="slave3:6"}
+Number Arduino_7    "Arduino Int_7 [%d]"            <temperature>       (modbus)    {modbus="slave3:7"}
+Number Arduino_8    "Arduino Int_8 [%d]"            <temperature>       (modbus)    {modbus="slave3:8"}
+
+Number  Register_0              "Temperature_0 [%.2f]"          <temperature>           {modbus="slave6:0"}
+Number  Register_1              "Temperature_1 [%.2f]"          <temperature>           {modbus="slave6:1"}
+Number  Register_2              "Temperature_2 [%d]"            <temperature>           {modbus="slave6:2"}
+Number  Register_4              "Temperature_4 [%.2f]"          <temperature>           {modbus="slave6:4"}
+Number  Register_6              "Temperature_6 [%.1f °C]"       <temperature>           {modbus="slave6:6"}
+Number  Temp_1                  "DS18S20_1 [%.2f °C]"           <temperature>   (modbus)
+Number  Register_7              "Temperature_6 [%.1f °C]"       <temperature>           {modbus="slave6:7"}
+Number  Temp_2                  "DS18S20_2 [%.2f °C]"           <temperature>   (modbus)
+Switch  Coil8                   "Ausgang"                                       (modbus) {modbus="slave7:0"}
+*/
+
+Number  Arduino_3               "Arduino Reg 3 [%d]"                                       {modbus="slave6:3"}
+Number  Temp_pa                 "Luftdruck gemessen [%.1f mbar]" <pressure>     (modbus)
+Switch  Coil8                   "Ausgang"                                       (modbus) {modbus="slave7:0"}
+
+
+
+
+
+Contact Bit50
+Contact Bit51
+Contact Bit52
+Contact Bit53
+Contact Bit54
+Contact Bit55
+Contact Bit56
+Contact Bit57
+Contact Bit58
+Contact Bit59
+Contact Bit510
+Contact Bit511
+Contact Bit512
+Contact Bit513
+Contact Bit514
+Contact Bit515
+
+Number xx

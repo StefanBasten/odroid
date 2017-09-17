@@ -1,0 +1,11 @@
+rule "Garagentor"
+
+        when
+                Item Tor_Garage changed from OFF to ON
+        then
+                if (Tor_Garage.state==ON) {
+                        createTimer(now.plusMinutes(1)) [sendCommand(Tor_Garage,OFF)]
+                }
+end
+
+

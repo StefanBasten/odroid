@@ -1,0 +1,74 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+
+rule "Temperaturen"
+	when
+		Time cron "0 * * * * ?" or
+		System started
+	then	
+		postUpdate(Aussen_max, Register_6_f.maximumSince(now.minusDays(0).withTimeAtStartOfDay).state  as DecimalType)	
+		postUpdate(Aussen_min, Register_6_f.minimumSince(now.minusDays(0).withTimeAtStartOfDay).state  as DecimalType)
+		postUpdate(Aussen_dur, Register_6_f.averageSince(now.minusDays(0).withTimeAtStartOfDay))
+		postUpdate(Solar_max, Register_1_f.maximumSince(now.minusDays(0).withTimeAtStartOfDay).state  as DecimalType)
+		postUpdate(Solar_min, Register_1_f.minimumSince(now.minusDays(0).withTimeAtStartOfDay).state  as DecimalType)
+end
+
+rule "Solartemperaturen mit Minuswerten "
+
+        when
+                Item Register_1 received update or Item Register_1 changed
+        then
+        {
+                var temp1=Register_1.state as DecimalType
+                if (Register_1.state > 32767) {
+                    Register_1_f.postUpdate((temp1.floatValue-65536) * 0.01)
+        }
+            else {
+                Register_1_f.postUpdate(temp1.floatValue * 0.01)
+            }
+        }
+end
+
+
+rule "Aussentemperatur mit Minuswerten "
+
+        when
+                Item Register_6 received update or Item Register_6 changed
+        then
+        {
+                var temp6=Register_6.state as DecimalType
+                if (Register_6.state > 32767) {
+                    Register_6_f.postUpdate((temp6.floatValue-65536) * 0.01)
+        }
+            else {
+                Register_6_f.postUpdate(temp6.floatValue * 0.01)
+            }
+        }
+end
+
+rule "GATemperatur mit Minuswerten "
+
+        when
+                Item Register_9 received update or Item Register_9 changed
+        then
+        {
+                var temp20=Register_9.state as DecimalType
+                if (Register_9.state > 32767) {
+                    G_AT.postUpdate((temp20.floatValue-65536) * 0.01)
+        }
+            else {
+                G_AT.postUpdate(temp20.floatValue * 0.01)
+            }
+        }
+end

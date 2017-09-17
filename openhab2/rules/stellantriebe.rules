@@ -1,0 +1,40 @@
+rule "Stellantriebe ein"
+
+        when
+                Time cron "00 15 15 * * ?"
+        then
+                sendCommand(EG_WZ_etrv_s,23.0)
+		sendCommand(EG_EZ_etrv_s,23.0)
+	end
+
+
+rule "Stellantriebe aus"
+
+        when
+                Time cron "00 45 15 * * ?"
+        then
+                sendCommand(EG_WZ_etrv_s,18.0)
+		sendCommand(EG_EZ_etrv_s,18.0)
+	end
+
+
+rule "Stellantrieb morgens ein"
+
+        when
+                Time cron "00 15 05 * * ?"
+        then
+                sendCommand(EG_Bad_etrv_s,23.0)
+		sendCommand(EG_WZ_etrv_s,23.0)
+                sendCommand(EG_EZ_etrv_s,23.0)        
+	end
+
+
+rule "Stellantrieb morgens aus"
+
+        when
+                Time cron "00 45 06 * * ?"
+        then
+                sendCommand(EG_Bad_etrv_s,18.0)
+		sendCommand(EG_WZ_etrv_s,18.0)
+                sendCommand(EG_EZ_etrv_s,18.0)
+        end

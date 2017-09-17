@@ -1,0 +1,11 @@
+Number EG_WZ_T <temperature> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610208506:temperature" }
+Number EG_WZ_W <line-decline> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610208506:energy" }
+Number EG_WZ_P <energy> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610208506:power" }
+Switch Switch_Dect200_1 { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610208506:outlet" }
+
+Number UG_KB_T <temperature> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610210887:temperature" }
+Number UG_KB_W <line-decline> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610210887:energy" }
+Number UG_KB_P <energy> { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610210887:power" }
+Switch Switch_Dect200_2 { channel="avmfritz:FRITZ_DECT_200:192_168_178_1:087610210887:outlet" }
+DateTime Waschmaschine_Time "Waschmaschine fertig seit [%1$td.%1$tm %1$tH:%1$tM]"  <clock>
+

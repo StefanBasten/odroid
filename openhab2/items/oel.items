@@ -1,0 +1,6 @@
+Number  counter                 "counter [%.1f]"                        <count>
+Number  Zaehler_oel             "Zählerstand Oel [%.1f Liter]"          <zaehler>       (Oel)
+Number  Tagesoel                "gestriger Verbrauch  [%.1f Liter]"     <zaehler>       (Oel)
+Number  Tagesoelh               "heutiger Verbrauch [%.1f Liter]"       <zaehler>       (Oel)
+Number  Tankinhalt              "Tankinhalt [%.1f Liter]"               <zaehler>       (Oel)
+Number  Jahresver               "Jahresverbrauch [%.1f Liter]"          <zaehler>       (Oel)

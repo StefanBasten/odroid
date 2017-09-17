@@ -1,0 +1,9 @@
+rule "Baumbeleuchtung"
+    when
+        Item Aussen_Baum changed from OFF to ON
+    then
+        createTimer(now.plusMinutes(120)) [|
+        sendCommand(Aussen_Baum,OFF)
+        logInfo("Baumbeleuchtung","aus")
+        ]
+end

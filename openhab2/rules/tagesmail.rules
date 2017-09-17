@@ -1,0 +1,12 @@
+
+rule "Tagesmail"
+
+        when
+                Item Testmail changed from OFF to ON or
+                Time cron "50 59 23 * * ?"
+        then
+        sendMail("snbasten@gmail.com","Tagesmeldung", "heutiger Wasserverbrauch " + Tagesliter.state.format("%.1f") + " Liter " + "\ngestriger Wasserverbrauch " + Liter_Tag.state.format("%.1f") + " Liter " + "\nheutiger Öl Verbrauch " + Tagesoelh.state.format("%.1f") +" Liter" + "\ngestriger Öl Verbrauch " + Tagesoel.state.format("%.1f") + " Liter" + "\nTankinhalt " + Tankinhalt.state.format("%.1f") + " Liter" + "\nÖlzähler " + Zaehler_oel.state.format("%.1f") + " Liter" + "\nJahresverbrauch " + Jahresver.state.format("%.1f") +" Liter" + "\nBrennerstarts " + burnerd.state.format("%.0f") + " Starts" + "\nStromzähler " + Wirkenergie.state.format("%.1f") + " KWh" + "\nStromverbrauch " + Tageswirk.state.format("%.1f") +" KWh" + " \nMaxleistung " + Wirkleistung_max.state.format("%.1f") +" Watt" + "\nMaximaltemperatur " + Aussen_max.state.format("%.1f") +" °C" + " \nMinimaltemperatur " + Aussen_min.state.format("%.1f") +" °C" + "\nSolarpumpe " + Countpump.state.format("%d") + " x Ein " + Pumpe.state.format("%s") +" h:m:s ")
+        executeCommandLine("cp -R /etc/openhab2/ /mnt/")
+        logInfo("Backup","kopiert")
+end
+

@@ -1,0 +1,30 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistance.*
+import org.openhab.model.script.actions.*
+import java.lang.Math
+import org.joda.time.*
+import org.joda.*
+import java.lang.Float
+import java.lang.Integer
+import java.lang.Double
+import java.lang.String
+import java.lang.*
+import java.util.Calendar
+import java.util.Date
+import java.util.TimeZone
+import java.text.SimpleDateFormat
+import org.openhab.model.script.actions.Timer
+
+rule "Wasser"
+        when
+        Time cron "0 * * * * ?" or
+        System started
+        then
+        var Number Literh = Liter.deltaSince(now.minusDays(0).withTimeAtStartOfDay) 
+        postUpdate(Tagesliter,Literh)
+        var Number Jahresl = 0.0
+        var Number Literr = Liter.state as DecimalType
+        postUpdate(Jahresliter, Literr - Jahresl)
+end
+
+

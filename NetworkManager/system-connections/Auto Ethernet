@@ -1,0 +1,18 @@
+[connection]
+id=Auto Ethernet
+uuid=faa37d73-27e6-4364-acae-540f9ad77ff3
+type=ethernet
+permissions=
+secondaries=
+
+[ethernet]
+mac-address=00:00:00:00:00:00
+mac-address-blacklist=
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+dns-search=
+method=auto
